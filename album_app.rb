@@ -5,38 +5,24 @@ class AlbumApp
  
   # albums.sort_by {|_key, value| _key}.to_h
   def call(env)
-    # response_body = "<h1>Top 100 Albums of All Time</h1>"
-    @album_list = parseAlbums('rank')
-    # raw = File.read(file_path)
-    # ERB.new(raw).result(binding)
-    @template = File.read('./index.erb')
-     
-     # Read the data from the file.
-    
-    # Append it to the response body.
-    # response_body << albums.to_s
-    # Send the response
-     [200, {'Content-Type' => 'text/html'}, [ERB.new(@template).result( binding )]]
+    request = Rack::Request.new(env)
+
+    if request.path == '/'
+      @album_list = parseAlbums('rank')
+      @template = File.read('./index.erb')
+      [200, {'Content-Type' => 'text/html'}, [ERB.new(@template).result( binding )]]
+    elsif request.path == '/year'
+      @album_list = parseAlbums('year')
+      @template = File.read('./index.erb')
+      [200, {'Content-Type' => 'text/html'}, [ERB.new(@template).result( binding )]]
+    elsif request.path == '/title'
+      @album_list = parseAlbums('title')
+      @template = File.read('./index.erb')
+      [200, {'Content-Type' => 'text/html'}, [ERB.new(@template).result( binding )]]
+    else
+      [404, {'Content-Type' => 'text/html'}, ['Not Found']]
+    end
 
   end
-
-  
-  # get '/' do
-  #   @album_list = parseAlbums 'rank'
-  #  	@template = File.read('./index.erb')
-  #   ERB.new(@template).result( binding )  
-  # end
-
-  # get '/title' do
-  # 	@album_list = parseAlbums 'title'
-  #  	@template = File.read('./index.erb')
-  #   ERB.new(@template).result( binding )  
-  # end
-
-  # get '/year' do
-  # 	@album_list = parseAlbums 'year'
-  #  	@template = File.read('./index.erb')
-  #  ERB.new(@template).result( binding )  
-  # end
 
 end
