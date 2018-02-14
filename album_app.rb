@@ -19,26 +19,7 @@ class AlbumApp
     # response_body << albums.to_s
     # Send the response
      [200, {'Content-Type' => 'text/html'}, [erb]]
-
+    request = Rack::Request.new(env)
   end
-
-  
-  # get '/' do
-  #   @album_list = parseAlbums 'rank'
-  #  	@template = File.read('./index.erb')
-  #   ERB.new(@template).result( binding )  
-  # end
-
-  # get '/title' do
-  # 	@album_list = parseAlbums 'title'
-  #  	@template = File.read('./index.erb')
-  #   ERB.new(@template).result( binding )  
-  # end
-
-  # get '/year' do
-  # 	@album_list = parseAlbums 'year'
-  #  	@template = File.read('./index.erb')
-  #  ERB.new(@template).result( binding )  
-  # end
 
 end
