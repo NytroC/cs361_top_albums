@@ -11,8 +11,8 @@ def parseAlbums sorted_by
 		albums = albums.sort_by {|_key, value| _key}.to_h
 
 	elsif sorted_by == 'year'
-		albums = albums.sort_by {|_key, value| value}.to_h
+		albums.sort_by {|_key, value| value}.to_h
 	end
-	puts @albums
-	@albums
+	puts albums
+	albums
 end
