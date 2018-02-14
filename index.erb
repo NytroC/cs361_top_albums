@@ -1,5 +1,29 @@
-<h1>Top 100 Albums of all Time</h1>
-<a href="/">rank</a> <a href="/title">title</a> <a href="/year">year</a>
-<% @album_list.each_with_index do |(key, value),index|%>
-<p><%= index %>: <%= key %> ,<%= value %></p>
-<% end %>
+<head>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+
+    <title>Top Albums</title>
+
+    <script>
+        $(document).ready(function (event) {
+            $(".highlight").click(function(){
+                $(this).css("background", "yellow");
+            });
+        })
+    </script>
+
+    <style>
+
+    </style>
+</head> 
+
+<body>
+    <h1>Top 100 Albums of all Time</h1>
+    <a href="/">rank</a> <a href="/title">title</a> <a href="/year">year</a>
+    <% @album_list.each_with_index do |(key, value),index|%>
+    <p class="highlight"><%= index %>: <%= key %> ,<%= value %></p>
+    <% end %>
+</body>
