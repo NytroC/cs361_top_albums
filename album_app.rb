@@ -9,14 +9,16 @@ class AlbumApp
     @album_list = parseAlbums('rank')
     # raw = File.read(file_path)
     # ERB.new(raw).result(binding)
+    req = Rack::Request.new(env)
+    puts req.params['sort_by'] 
     @template = File.read('./index.erb')
      
      # Read the data from the file.
-    
+    erb = ERB.new(@template).result( binding )
     # Append it to the response body.
     # response_body << albums.to_s
     # Send the response
-     [200, {'Content-Type' => 'text/html'}, [ERB.new(@template).result( binding )]]
+     [200, {'Content-Type' => 'text/html'}, [erb]]
 
   end
 
