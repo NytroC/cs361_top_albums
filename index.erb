@@ -22,7 +22,7 @@
 
 <body>
     <h1>Top 100 Albums of all Time</h1>
-    <a href="/" name="<%= @sort_by_ = 'rank' %>">rank</a> <a href="/title">title</a> <a href="/year">year</a>
+    <a href="/" name="<%= @sort_by_ = 'rank' %>">rank</a> <a href="/">title</a> <a href="/">year</a>
     <% @album_list.each_with_index do |(key, value),index|%>
     <p><%= index %>: <%= key %> ,<%= value %></p>
     <% end %>
