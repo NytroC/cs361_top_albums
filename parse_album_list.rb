@@ -6,6 +6,5 @@ def parseAlbums
 	arr_of_arrs.each do |arr|
 		albums[arr[0]] = arr[1]
 	end
-	puts albums
 	albums
 end
