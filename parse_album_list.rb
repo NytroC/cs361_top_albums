@@ -11,7 +11,7 @@ def parseAlbums(sorted_by = 'rank')
 		albums = albums.sort_by {|_key, value| _key}.to_h
 
 	elsif sorted_by == 'year'
-		albums.sort_by {|_key, value| value}.to_h
+		albums = albums.sort_by {|_key, value| value.to_i}.to_h
 	end
 	albums
 end
