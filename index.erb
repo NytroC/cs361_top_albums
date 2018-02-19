@@ -9,7 +9,7 @@
     	}
 
     </style>
-</head> 
+</head>
 
 <body>
     <h1>Top 100 Albums of all Time</h1>
@@ -18,12 +18,8 @@
     	<input type="submit">
     </form>
     <a href="?sort_by=rank" class="<%= @sort_by_ = 'rank' %>">rank</a> <a href="?sort_by=title">title</a> <a href="?sort_by=year">year</a>
-    <% @album_list.each_with_index do |(key, value),index|%>
-    	<% if @ind.to_i == index + 1%>
-    		<p class = "highlight"><%= index += 1 %>: <%= key %> ,<%= value %></p>
-    	<% else %>
-    		<p><%= index += 1 %>: <%= key %> ,<%= value %></p>
-    	<% end %>
+    <% @highlighted_list.each do |album|%>
+    <%= album %>
     <% end %>
 </body>
 </html>
