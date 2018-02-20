@@ -2,7 +2,9 @@ require 'erb'
 require_relative 'parse_album_list'
 
 class AlbumApp
-   @@prevSort = ""
+   def initialize
+     @stored_sorting_state = ''
+   end
   # albums.sort_by {|_key, value| _key}.to_h
   def call(env)
 
@@ -10,16 +12,16 @@ class AlbumApp
     sorting = req.params['sort_by']
 
     if sorting.nil?
-      sorting = @@prevSort
+      sorting = @stored_sorting_state
     else
-      @@prevSort = sorting
+      @stored_sorting_state = sorting
     end
-    @ind = req.params['index']
+    @selected_index = req.params['index']
     @album_list = parseAlbums(sorting)
     @highlighted_list = []
-    unless @ind.nil?
+    unless @selected_index.nil?
       @album_list.each_with_index do |(key, value), index|
-        if @ind.to_i == index + 1
+        if @selected_index.to_i == index + 1
       		@highlighted_list.push("<p class = 'highlight'>#{index + 1}: #{key} ,#{value}</p>")
       	else
       		@highlighted_list.push("<p>#{index + 1}: #{key} ,#{value}</p>")

@@ -17,7 +17,7 @@
     	<input type="text" name="index">
     	<input type="submit">
     </form>
-    <a href="?sort_by=rank" class="<%= @sort_by_ = 'rank' %>">rank</a> <a href="?sort_by=title">title</a> <a href="?sort_by=year">year</a>
+    <a href="?sort_by=rank" >rank</a> <a href="?sort_by=title">title</a> <a href="?sort_by=year">year</a>
     <% @highlighted_list.each do |album|%>
     <%= album %>
     <% end %>
