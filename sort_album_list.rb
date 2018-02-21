@@ -1,6 +1,6 @@
 require 'csv'
 
-def parseAlbums(sorted_by = 'rank')
+def sort_albums(sorted_by = 'rank')
 	arr_of_arrs = CSV.read("top_100_albums.txt")
 	albums = {}
 	arr_of_arrs.each do |arr|

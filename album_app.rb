@@ -1,23 +1,23 @@
 require 'erb'
-require_relative 'parse_album_list'
+require_relative 'sort_album_list'
 
 class AlbumApp
-   def initialize
-     @stored_sorting_state = ''
-   end
+  def initialize
+    @stored_sorting_state = ''
+  end
   # albums.sort_by {|_key, value| _key}.to_h
   def call(env)
 
     req = Rack::Request.new(env)
-    sorting = req.params['sort_by']
+    sorting_method = req.params['sort_by']
 
-    if sorting.nil?
-      sorting = @stored_sorting_state
+    if sorting_method.nil?
+      sorting_method = @stored_sorting_state
     else
-      @stored_sorting_state = sorting
+      @stored_sorting_state = sorting_method
     end
     @selected_index = req.params['index']
-    @album_list = parseAlbums(sorting)
+    @album_list = sort_albums(sorting_method)
     @highlighted_list = []
     unless @selected_index.nil?
       @album_list.each_with_index do |(key, value), index|
@@ -38,7 +38,7 @@ class AlbumApp
 
      # Read the data from the file.
     erb = ERB.new(@template).result( binding )
-     [200, {'Content-Type' => 'text/html'}, [erb]]
+    [200, {'Content-Type' => 'text/html'}, [erb]]
   end
 
 end
