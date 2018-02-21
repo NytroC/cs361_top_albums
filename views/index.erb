@@ -18,8 +18,8 @@
     	<input type="submit">
     </form>
     <a href="?sort_by=rank" >rank</a> <a href="?sort_by=title">title</a> <a href="?sort_by=year">year</a>
-    <% @highlighted_list.each do |album|%>
-    <%= album %>
+    <% @album_list.each do |album|%>
+    <p><%= album %></p>
     <% end %>
 </body>
 </html>
