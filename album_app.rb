@@ -1,25 +1,11 @@
 require 'erb'
 require 'sinatra'
-require_relative 'sort_album_list'
+require_relative 'album_list'
 
-class AlbumApp < Sinatra::Base
-  def initialize
-    @stored_sorting_state = ''
-    @album_list = sort_albums('rank')
-  end
-  # albums.sort_by {|_key, value| _key}.to_h
-
-  get '/' do
-
-    erb :index
-  end
-
-  def sort_by
-
-  end
-
-
-
-
-
+get '/' do
+  album_list = AlbumList.new
+  album_list.sort(params[:sort_by])
+  puts params
+  @album_list = album_list.get_albums
+  erb :index
 end
