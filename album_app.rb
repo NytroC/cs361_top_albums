@@ -1,11 +1,14 @@
 require 'erb'
 require 'sinatra'
 require_relative 'album_list'
+class AlbumApp < Sinatra::Base
+  set :albums, AlbumList.new
 
-get '/' do
-  album_list = AlbumList.new
-  album_list.sort(params[:sort_by])
-  puts params
-  @album_list = album_list.get_albums
-  erb :index
+  get '/' do
+    settings.albums.sort(params[:sort_by]) unless params[:sort_by].nil?
+    settings.albums.sort(params[:index]) unless params[:index].nil?
+    @album_list = settings.albums.get_albums
+    erb :index
+  end
+
 end

@@ -6,8 +6,7 @@ class AlbumList
 
   def initialize
     @albums = generate_album_list('top_100_albums.txt')
-    @current_highlighted_rank = nil
-    #@current_sort_order = 'rank'
+    @current_highlighted_index = nil
   end
 
   def sort(attribute = 'rank')
@@ -23,6 +22,10 @@ class AlbumList
 
   def get_albums
     @albums
+  end
+
+  def set_highlighted_index(index)
+    @current_highlighted_index = index
   end
 
 end
