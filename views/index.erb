@@ -4,7 +4,7 @@
 <head>
     <title>Top Albums</title>
     <style type="text/css">
-    	.highlight{
+    	.highlighted{
     		background: YELLOW;
     	}
 
@@ -19,7 +19,7 @@
     </form>
     <a href="?sort_by=rank" >rank</a> <a href="?sort_by=title">title</a> <a href="?sort_by=year">year</a>
     <% @album_list.each do |album|%>
-    <p><%= album.rank %> <%= album.title %><%= album.year %></p>
+    <p class="<%= album.highlighted ? 'highlighted' : ''  %>"><%= album.rank %> <%= album.title %><%= album.year %></p>
     <% end %>
 </body>
 </html>
