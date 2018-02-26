@@ -27,8 +27,6 @@ class AlbumList
   def set_highlighted_index(index)
     @albums.each do |album|
       if album.rank == index.to_i
-        puts album.rank
-        puts index
         album.highlighted = true
       else
         album.highlighted = false
