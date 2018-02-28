@@ -6,18 +6,10 @@ class AlbumList
 
   def initialize
     @albums = generate_album_list('top_100_albums.txt')
-    @current_highlighted_index = nil
   end
 
   def sort(attribute = 'rank')
-    @current_sort_order = attribute
-    if attribute == 'rank'
-      @albums = @albums.sort_by{|album| album.rank}
-    elsif attribute == 'title'
-      @albums = @albums.sort_by{|album| album.title}
-    elsif attribute == 'year'
-      @albums = @albums.sort_by{|album| album.year}
-    end
+    @albums = @albums.sort_by{|album| album.get_attribute(attribute)}
   end
 
   def get_albums

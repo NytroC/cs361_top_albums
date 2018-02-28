@@ -10,7 +10,15 @@ class Album
     @year = year
     @highlighted = false
   end
-
+  def get_attribute attribute
+    if attribute == 'rank'
+      @rank
+    elsif attribute == 'title'
+      @title
+    elsif attribute == 'year'
+      @year
+    end
+  end
 
 
 end
